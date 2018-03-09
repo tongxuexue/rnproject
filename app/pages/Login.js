@@ -8,8 +8,17 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  Image,
+  TextInput
 } from 'react-native';
+
+import LocalImg from '../images'
+import px2dp from '../util'
+import { AppSizes, AppColors } from '../style';
+const InputHeight = px2dp(45)
+
+const containerWidth = AppSizes.screen.width - AppSizes.padding * 2;
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -22,6 +31,31 @@ export default class Login extends Component {
   render() {
     return (
         <View style={styles.container}>
+          <Image
+              style={styles.head}
+              source={LocalImg.login_head}
+          />text
+          <View style={styles.inputBack}>
+            <Text style={styles.title}>
+              账户
+            </Text>
+            <TextInput style={styles.input}>
+
+            </TextInput>
+          </View>
+          <View style={styles.line}>
+          </View>
+          <View style={styles.inputBack}>
+            <Text style={styles.title}>
+              密码
+            </Text>
+            <TextInput style={styles.input}>
+
+            </TextInput>
+          </View>
+          <View style={styles.line}>
+          </View>
+
           <Text style={styles.welcome} onPress={() => Actions.homepage()}>
             Welcome to React Native!
           </Text>
@@ -38,10 +72,38 @@ export default class Login extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+    height: AppSizes.screen.height
+  },
+  head: {
+    width: containerWidth,
+    height: containerWidth * 0.86,
+    resizeMode: 'contain',
+    marginTop: 0,
+    marginBottom: 0
+  },
+  inputBack: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: containerWidth * 0.95,
+    height: containerWidth * 0.95 *0.16,
+  },
+  input: {
+    flex: 4,
+    height: InputHeight
+  },
+  title: {
+    flex: 1,
+    fontSize: 14,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: AppColors.textColor3
+  },
+  line: {
+    backgroundColor: '#EBEBEB',
+    width: containerWidth * 0.95,
+    height: 1,
   },
   welcome: {
     fontSize: 20,

@@ -15,13 +15,14 @@ const App = () => {
         <Scene key="root">
           <Scene key="login"
                  component={Login}
-                 title="Login"
+                 title="登录"
                  initial
+                 hideNavBar="ture"
           />
           <Scene
               key="homepage"
               component={HomePage}
-              title="HomePage"
+              title="首页"
           />
         </Scene>
       </Router>

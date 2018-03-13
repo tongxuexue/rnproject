@@ -2,8 +2,8 @@
  * Created by gy on 2018/3/8.
  */
 
-import React, { Component } from 'react';
-import { Router, Scene } from 'react-native-router-flux';
+import React, {Component} from 'react';
+import {Router, Scene} from 'react-native-router-flux';
 
 import Login from './pages/Login';
 import HomePage from './pages/HomePage';

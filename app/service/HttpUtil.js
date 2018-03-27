@@ -16,7 +16,7 @@ import showToast from '../util/toast';
 export default class HttpUtil {
 
   //基于 fetch 封装的 GET请求
-  static getFatch(url) {
+  static getFetch(url) {
     return new Promise((resolve, reject) => {
       fetch(url)
           .then(response => {
@@ -41,7 +41,7 @@ export default class HttpUtil {
   }
 
   //基于 fetch 封装的 POST请求
-  static postFatch(url, params) {
+  static postFetch(url, params) {
     return new Promise((resolve, reject) => {
       fetch(url, {
         method: 'POST',

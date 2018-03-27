@@ -20,7 +20,6 @@ import LocalImg from '../images'
 import px2dp from '../util'
 import {AppSizes, AppColors} from '../style';
 const InputHeight = px2dp(45)
-
 const containerWidth = AppSizes.screen.width - AppSizes.padding * 2;
 
 
@@ -34,31 +33,13 @@ export default class Login extends Component {
     };
   }
 
-  _confirm() {
-    const params = {
-      mobile: this.state.nameText,
-      password: this.state.passwordText,
-    };
-    //console.log(params);
-    Actions.homepage();
-    HttpUtil.postFatch(Api.login_url, params)
-        .then((json) => {
-          Actions.homepage();
-        }, (json) => {
-        })
-        .catch((error) => {
-          //TODO 处理请求fail
-        });
-
-  }
-
   render() {
     return (
         <View style={styles.container}>
           <Image
               style={styles.head}
               source={LocalImg.login_head}
-          />text
+          />
           <View style={styles.inputBack}>
             <Text style={styles.title}>
               账户
@@ -73,7 +54,6 @@ export default class Login extends Component {
               密码
             </Text>
             <TextInput style={styles.input } onChangeText={(text) => this.setState({passwordText: text})}>
-
             </TextInput>
           </View>
           <View style={styles.line}>
@@ -84,13 +64,30 @@ export default class Login extends Component {
         </View>
     );
   }
+
+  _confirm() {
+    const params = {
+      mobile: this.state.nameText,
+      password: this.state.passwordText,
+    };
+    //console.log(params);
+    Actions.homepage();
+    HttpUtil.postFetch(Api.login_url, params)
+        .then((json) => {
+          Actions.homepage();
+        })
+        .catch((error) => {
+          //TODO 处理请求fail
+        });
+
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
-    height: AppSizes.screen.height
   },
   head: {
     width: containerWidth,
@@ -137,6 +134,5 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: 'bold',
     textAlign: 'center',
-  },
-
+  }
 });
